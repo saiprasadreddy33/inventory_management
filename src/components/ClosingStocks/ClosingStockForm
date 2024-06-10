@@ -1,0 +1,76 @@
+// components/ClosingStocks/ClosingStockForm.js
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Typography, TextField, Button } from '@material-ui/core';
+import api from '../../api';
+
+const ClosingStockForm = () => {
+    const [closingStock, setClosingStock] = useState({ date: '', product: '', quantity: 0 });
+    const history = useHistory();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setClosingStock({ ...closingStock, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await api.closeStock(closingStock);
+            history.push('/closing-stocks');
+        } catch (error) {
+            console.error('Error closing stock:', error);
+        }
+    };
+
+    return (
+        <div>
+            <Typography variant="h4">Close Stock</Typography>
+            <form onSubmit={handleSubmit}>
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="date"
+                    label="Date"
+                    name="date"
+                    type="date"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    value={closingStock.date}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="product"
+                    label="Product"
+                    name="product"
+                    value={closingStock.product}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="quantity"
+                    label="Quantity"
+                    name="quantity"
+                    type="number"
+                    value={closingStock.quantity}
+                    onChange={handleChange}
+                />
+                <Button type="submit" variant="contained" color="primary">
+                    Submit
+                </Button>
+            </form>
+        </div>
+    );
+};
+
+export default ClosingStockForm;
