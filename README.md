@@ -8,21 +8,21 @@ This Inventory Management System is a web-based application designed to manage a
 
 
 ## Features
-User Authentication and Authorization
-Company Management
-User Management
-Role Management
-Region Management
-Product Management
-Purchase Management
-Purchase Return Management
-Closing Stock Management
-Customer Management
-Supplier Management
-Salesman Management
-Branch Management
-Brand Management
-Product Category Management
+- User Authentication and Authorization
+-Company Management
+- User Management
+- Role Management
+- Region Management
+- Product Management
+- Purchase Management
+- Purchase Return Management
+- Closing Stock Management
+- Customer Management
+- Supplier Management
+- Salesman Management
+- Branch Management
+- Brand Management
+- Product Category Management
 
 
 ### `npm start`
